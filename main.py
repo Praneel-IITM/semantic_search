@@ -6,6 +6,15 @@ from pydantic import BaseModel
 from openai import OpenAI
 from sklearn.metrics.pairwise import cosine_similarity
 from data import documents
+from fastapi.middleware.cors import CORSMiddleware
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # allow all origins
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # ==========================
 # CONFIG
