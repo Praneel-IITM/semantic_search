@@ -2,19 +2,23 @@ import os
 import time
 import numpy as np
 from fastapi import FastAPI
+
+from fastapi.middleware.cors import CORSMiddleware
+
 from pydantic import BaseModel
 from openai import OpenAI
 from sklearn.metrics.pairwise import cosine_similarity
 from data import documents
-from fastapi.middleware.cors import CORSMiddleware
 
+app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # allow all origins
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 # ==========================
 # CONFIG
